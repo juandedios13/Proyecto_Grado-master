@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
+import { axiosClient } from '../../config/axiosClient';
 
 const FormsLogin = () => {
 
@@ -37,8 +38,8 @@ const FormsLogin = () => {
               }
         } 
         console.log("asdqwe")
-        fetch("http://localhost:3001/login",datosApi).then((e)=>{
-                return e.json(); 
+        axiosClient.post('/login', datos).then((e)=>{
+          return e.json(); 
         }).then((e)=>{
             e.fecha = new Date();
             e.recargar = false;
