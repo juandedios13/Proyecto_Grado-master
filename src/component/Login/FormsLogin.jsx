@@ -28,19 +28,8 @@ const FormsLogin = () => {
     }
 
     const envio = ()=>{
-        let datosApi = {
-            method: 'post',
-            body:JSON.stringify({
-                datos
-            }),
-            headers:{
-                'Content-Type': 'application/json'
-              }
-        } 
-        console.log("asdqwe")
-        axiosClient.post('/login', datos).then((e)=>{
-          return e.json(); 
-        }).then((e)=>{
+        axiosClient.post('/login', {datos}).then(({data: e})=>{
+          
             e.fecha = new Date();
             e.recargar = false;
             localStorage.setItem('token',JSON.stringify(e));
