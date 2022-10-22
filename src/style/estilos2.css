@@ -1,0 +1,117 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.ContainerUnidades{
+    background-image: url(img/fondo.jpg);
+    background-repeat: repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
+.contenedorUnidades{
+    margin-left: 50px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 90%;
+    height: 500px;
+    /* background-color: rgba(0, 0, 0, .5); */
+    display: flex;
+    flex-wrap:wrap;
+}
+
+.primeraileraUnidades, .segundaileraUnidades{
+    margin-top: 30px;
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* flex-wrap: wrap; */
+    
+}
+
+.primeraileraUnidades img, .segundaileraUnidades img{
+    width: 150px;
+}
+
+.primeraileraUnidades img:hover, .segundaileraUnidades img:hover{
+    border-radius: 100px;
+    box-shadow: 0 0 50px #f9eefc, 0 0 50px #a945c7, 0 0 80px #a945c7;
+    transition-delay:0.3s ;
+}
+
+.primeraileraUnidades input[type="button"], .segundaileraUnidades input[type="button"]{
+    padding: 10px 15px;
+    border-radius: 5px;
+    /* color: rgb(157, 54, 253); */
+    color: rgb(71, 69, 69);
+    letter-spacing: 2px;
+    font-size: 20px;
+    transition: 0.2s;
+    background: none;
+    border: none;
+    font-weight: bold;
+    background: rgba(252, 252, 252, 0.9);
+}
+
+.primeraileraUnidades input[type="button"]:hover, .segundaileraUnidades input[type="button"]:hover{
+    background: #a945c7;
+    box-shadow: 0 0 50px #f9eefc, 0 0 50px #a945c7, 0 0 80px #a945c7;
+    transition-delay:0.3s ;
+    color: aliceblue;
+}
+
+.unidad{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.astro{
+    width: 80px;
+    position: absolute;
+    bottom: 250px;
+}
+
+@media screen and (max-width: 667px) {
+    .primeraileraUnidades, .segundaileraUnidades{
+        flex-wrap: wrap;
+        margin-bottom: 250px;
+    }
+
+    .unidad{ 
+        margin-bottom: 50px;
+    }
+
+    .contenedorUnidades{
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .contenedorUnidades{
+        margin-top: 5px;
+    }
+}
+
+@media screen and (max-width: 330px){
+    .primeraileraUnidades{
+        margin-bottom: 720px;
+    }
+}
+
+
+
+
+
+
+
+
+
+

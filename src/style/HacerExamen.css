@@ -1,0 +1,117 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(img/HacerExamen/fondo.PNG);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.contenedoruno{
+    margin: 80px auto;
+    width: 90%;
+    height: 500px;
+    /* background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    flex-wrap:wrap; */
+
+    background-color: rgba(255, 255, 255, .6);
+    display: flex;
+    flex-wrap:wrap;
+    border-radius: 200px 15px 200px 15px;
+    transition: 2s;
+    justify-content: space-around;
+    /* position: absolute; */
+
+}
+
+.contenedoruno:hover{
+    border-radius: 15px 200px 15px 200px;
+}
+
+.imgatencion{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.imgaten{
+    width: 90%;
+    transition: 2s;
+}
+
+.imgaten:hover{
+    width: 95%;
+}
+
+.btnatencion{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnatencion input[type="button"]{
+    width: 200px;
+    height: 100px;
+    padding: 10px 15px;
+    border-radius: 30px;
+    /* color: rgb(157, 54, 253); */
+    color: #000000;
+    letter-spacing: 2px;
+    font-size: 23px;
+    transition: 2s;
+    background: none;
+    border: solid 1px#000000 ;
+    font-weight: bold;
+    background: rgba(252, 252, 252, 0.9);
+}
+
+.btnatencion input[type="button"]:hover{
+    background: #780e99;
+    box-shadow: 0 0 50px #f9eefc, 0 0 50px #a945c7, 0 0 80px #a945c7;
+    transition-delay:0.3s ;
+    color: aliceblue;
+    border: solid 1px rgb(255, 255, 255);
+}
+
+.abtnaten{
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+    .imgatencion{
+        width: 50%;
+    }
+    .btnatencion{
+        width: 10%;
+    }
+
+    .contenedoruno{
+        display: flex;
+        /* justify-content: space-between; */
+    }
+}
+
+@media screen and (max-width: 666px) {
+    .contenedoruno{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        justify-content: space-around;
+        height: 100%;
+    }
+
+    .imgatencion{
+        width: 100%;
+    }
+}
+
+

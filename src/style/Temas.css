@@ -1,0 +1,193 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+ 
+}
+
+body{
+
+background-image: url(img/fondoTema.jpg);
+background-size:  cover;
+background-repeat: no-repeat;
+background-attachment: fixed;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+.contenedor{
+  height: 500px;
+  width: 90%;
+  margin: 5vh auto;
+  /* background-color: rgb(205, 248, 234); */
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cajauno, .cajados{
+  /* background-color: blue; */
+  width: 50%;
+  padding: 30px;
+}
+
+.cajados{
+  background-color: rgba(255, 255, 255, .8);
+  height: 85vh;
+  overflow-y: scroll;
+  border-radius: 200px 0 200px 0;
+  transition: 2s;
+}
+
+.cajados:hover{
+  border-radius: 0 200px 0 200px;
+}
+
+.cajados::-webkit-scrollbar {
+  /*background:transparent;*/
+  background: rgb(54, 12, 94,.5);
+  height: 50px;
+
+}
+.cajado::-webkit-scrollbar-thumb {
+  background: rgb(54, 12, 94);
+}
+
+.cajauno{
+
+  display: flex;
+  /* margin: auto; */
+  flex-direction: column;
+  justify-content: center;
+  justify-items: center;
+}
+
+.img{
+  /* margin: auto; */
+  width: 100%;
+  transition: 1s;
+  
+}
+
+.img:hover{
+
+  width: 95%;
+}
+
+.titulo{
+  display: block;
+  margin: auto;
+  font-size: 50px;
+  margin-bottom: 30px;
+  text-align: center;
+  width: 50%;
+  padding: 5px;
+  transition: 0.5s;
+  color: black;
+}
+
+.titulo:hover{
+  background-color: rgb(54, 12, 94);
+  color: white;
+  border-radius: 10px;
+
+}
+
+ol{
+  margin: 50px;
+  /* text-decoration: underline; */
+}
+
+li{
+  margin: 20px 0;
+  list-style: none;
+}
+
+li:hover{
+  /* text-decoration: underline; */
+}
+
+a{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  padding: 10px;
+  transition: 0.5s;
+}
+
+a:hover{
+  /* text-decoration: underline; */
+  background-color: rgb(54, 6, 99);
+  color: white;
+  border-radius: 10px;
+}
+
+
+
+@media screen and (max-width: 1052px) {
+  a{
+      font-size: 18px;
+  }
+}
+@media screen and (max-width: 984px) {
+  a{
+      font-size: 16px;
+  }
+}
+@media screen and (max-width: 920px) {
+  a{
+      font-size: 15px;
+  }
+}
+@media screen and (max-width: 874px) {
+  a{
+      font-size: 13px;
+  }
+}
+@media screen and (max-width: 822px) {
+  a{
+      font-size: 10px;
+  }
+}
+@media screen and (max-width: 742px) {
+  .cajauno, .cajados{
+      /* background-color: blue; */
+      width: 100%;
+      /* padding: 30px; */
+  }
+  a{
+      font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 542px) {
+  a{
+      font-size: 16px;
+  }
+}
+@media screen and (max-width: 464px) {
+  a{
+      font-size: 14px;
+  }
+}
+@media screen and (max-width: 432px) {
+  a{
+      font-size: 14px;
+  }
+  .titulo{
+      font-size: 40px;
+  }
+}
+@media screen and (max-width: 416px) {
+  a{
+      font-size: 12px;
+  }
+}
+@media screen and (max-width: 406px) {
+  a{
+      font-size: 10px;
+  }
+}
+@media screen and (max-width: 376px) {
+  a{
+      font-size: 9px;
+  }
+}

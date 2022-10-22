@@ -1,0 +1,153 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  /* background-color: rgb(69, 176, 248); */
+  background-image: url(img/fondo.jpg);
+  /* background-repeat: no-repeat; */
+  background-size: cover;
+
+}
+
+.contenedor{
+  margin: 60px auto;
+  width: 90%;
+  height: auto;
+  /* background-color: aqua; */
+}
+
+.tablero{
+  width: 100%;
+  background-color: #fff;
+  color: #000;
+  border-radius: 5px;
+
+  /* border: 10px inset rgb(167, 157, 157); */
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
+
+}
+
+.tableroh1{
+  width: 100%;
+  margin-top: 5px;
+  position: relative;
+}
+
+.TableroDivImg{
+  width: 50%;
+  height: 50%;
+}
+
+.imgcontenido{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imgAstronauta{
+  background-image: url(img/astronauta.png);;
+}
+
+
+.parrafo{
+  width: 100%;
+  white-space: pre-wrap;
+  text-align: justify;
+  line-height: 1.5rem;
+  box-sizing: content-box;
+  position: relative;
+  padding-left: 50px;
+}
+
+.tablero:hover{
+  box-shadow: 0 0 50px #f9eefc, 0 0 50px #a945c7, 0 0 80px #a945c7;
+  transition-delay:0.3s ;
+}
+
+.imgbtn{
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.imgbtn .img{
+  width: 20%;
+  text-align: center;
+}
+
+.imgbtn .img img{
+  width: 150px;
+  
+}
+
+.btntablero{
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+input[type="button"]{
+  padding: 15px 20px;
+  border-radius: 5px;
+  /* color: rgb(157, 54, 253); */
+  color: rgb(71, 69, 69);
+  letter-spacing: 2px;
+  font-size: 24px;
+  transition: 0.2s;
+  background: none;
+  border: none;
+  font-weight: bold;
+  background: rgba(252, 252, 252, 0.9);
+}
+
+input[type="button"]:hover{
+  background: #a945c7;
+  box-shadow: 0 0 50px #f9eefc, 0 0 50px #a945c7, 0 0 80px #a945c7;
+  transition-delay:0.3s ;
+  color: aliceblue;
+}
+
+@media screen and (max-width: 1000px) {
+  .tablero{
+      height: 700px;
+  }
+
+  .imgbtn .img img{
+      width: 100px;
+      
+  }
+}
+
+@media screen and (max-width: 500px){
+  .tablero{
+      height: 600px;
+  }
+
+  .btntablero{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  }
+
+  input[type="button"]{
+      margin: 5px 0;
+      padding: 5px 10px;
+  }
+
+  .img img{
+      width:90%;
+  }
+
+
+}
