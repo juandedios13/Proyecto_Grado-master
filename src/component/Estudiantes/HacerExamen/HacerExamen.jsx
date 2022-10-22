@@ -12,6 +12,7 @@ import imageCinco from '../../../style/img/HacerExamen/cinco.PNG';
 import imageSeis from '../../../style/img/HacerExamen/seis.PNG';
 import imageSiete from '../../../style/img/HacerExamen/siete.PNG';
 import imageOcho from '../../../style/img/HacerExamen/ocho.PNG';
+import { axiosClient } from '../../../config/axiosClient';
 
 
 
@@ -31,8 +32,15 @@ const HacerExamen = () => {
     ] 
 
     const handleClickAdelante = ()=>{
-      navigate(`/Estudiantes/examen/${id}`);
-      
+      axiosClient.get(`/ValidarExamen/${id}`).then(({ data }) => {
+        if (data.finalizado) {
+          alert('Ya has realizado este examen')
+
+          return
+        }
+
+        navigate(`/Estudiantes/examen/${id}`)
+      })
     };
 
     const handleClickRegresar = ()=>{

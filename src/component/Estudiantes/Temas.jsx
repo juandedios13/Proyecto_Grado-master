@@ -6,6 +6,7 @@ import {
 import '../../style/Temas.css'
 import image from '../../style/img/astronautatexto.png'
 import Litemas from './Litemas';
+import { axiosClient } from '../../config/axiosClient';
 
 const Temas = () => {
 
@@ -21,19 +22,8 @@ const Temas = () => {
       }
 
       if(token != undefined && token != null ){
-          let tokenn = JSON.parse(token);
-          let datosApi = {  
-              method: 'post',
-              body: JSON.stringify(dato),
-              headers:{
-                  'Content-Type': 'application/json',
-                  'Authorization': JSON.stringify( tokenn.token)
-              }
-          }
 
-          fetch("http://localhost:3001/ListarSubContenido",datosApi).then((e)=>{
-              return e.json(); 
-          }).then((e)=>{
+          axiosClient.post('/ListarSubContenido', dato).then(({data: e})=>{
               console.log(e.ress)
               setDatos(e.ress)
           });
