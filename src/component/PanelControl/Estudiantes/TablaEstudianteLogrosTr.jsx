@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { axiosClient } from '../../../config/axiosClient';
 
 const TablaEstudianteLogrosTr = () => {
 
@@ -13,32 +14,12 @@ const TablaEstudianteLogrosTr = () => {
             datos:{tipo:"estudiante"}
         }
 
-        if(token != undefined && token != null ){
-            let tokenn = JSON.parse(token);
-            let datosApi = {  
-                method: 'post',
-                body: JSON.stringify(datos),
-                headers:{
-                    'Content-Type': 'application/json',
-                    'Authorization': JSON.stringify( tokenn.token)
-                }
-            }
-
-            fetch("http://localhost:3001/Listar",datosApi).then((e)=>{
-                return e.json(); 
-            }).then((e)=>{
-                //console.log(e.respuesta);
-                setdato(e.respuesta);
-            });
-        }else{
-            
+        if(token){
+          axiosClient.post('/Listar', datos).then((e)=>{
+            //console.log(e.respuesta);
+            setdato(e.respuesta);
+          });
         }
-
-        
-
-
-      return () => {
-      };
     }, []);
     
     let n = 0;

@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import '../../style/tablero.css';
 import image from '../../style/img/astronauta.png';
+import { axiosClient } from '../../config/axiosClient';
 
 const Tablero = () => {
   let navigate = useNavigate();
@@ -23,32 +24,15 @@ const Tablero = () => {
         datos:{idContenido,idSubContenido}
     }
 
-    if(token != undefined && token != null ){
-        let tokenn = JSON.parse(token);
-        let datosApi = {  
-            method: 'post',
-            body: JSON.stringify(dato),
-            headers:{
-                'Content-Type': 'application/json',
-                'Authorization': JSON.stringify( tokenn.token)
-            }
-        }
-
-        fetch("http://localhost:3001/ListarSubContenidoCompleto",datosApi).then((e)=>{
-            return e.json(); 
-        }).then((e)=>{
+    if (token) {
+        axiosClient.post('/ListarSubContenidoCompleto', dato).then((e)=>{
           console.log(e.ress[0])
           setDatos(e.ress[0])
-
-          fetch("http://localhost:3001/ListarSubContenidoAnteriorSiguente",datosApi).then((e)=>{
-            return e.json(); 
-          }).then((e)=>{
-            setIdSubConAnterior(e[0].anterior.idSubContenidoDetalle);
-            setIdSubConSiguiente(e[0].siguiente.idSubContenidoDetalle);
-          });
-        });
-    }else{
-        
+          return axiosClient.post('/ListarSubContenidoAnteriorSiguente', dato)
+        }).then((e)=>{
+          setIdSubConAnterior(e[0].anterior.idSubContenidoDetalle);
+          setIdSubConSiguiente(e[0].siguiente.idSubContenidoDetalle);
+        })
     }
 },[]);  
 

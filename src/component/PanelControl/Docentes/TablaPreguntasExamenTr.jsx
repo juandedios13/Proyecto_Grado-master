@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
     Link
   } from "react-router-dom";
+import { axiosClient } from '../../../config/axiosClient';
 
 const TablaPreguntasExamenTr = (props) => {
    
@@ -17,28 +18,12 @@ const TablaPreguntasExamenTr = (props) => {
             datos:{idexamen:props.id}
         }
 
-        if(token != undefined && token != null ){
-            let tokenn = JSON.parse(token);
-            let datosApi = {  
-                method: 'post',
-                body: JSON.stringify(datos),
-                headers:{
-                    'Content-Type': 'application/json',
-                    'Authorization': JSON.stringify( tokenn.token)
-                }
-            }
-
-            fetch("http://localhost:3001/ListarPreguntas",datosApi).then((e)=>{
-                return e.json(); 
-            }).then((e)=>{
-                //console.log(e.respuesta);
-                setdato(e.respuesta);
-            });
-        }else{
-            
+        if (token) {
+          axiosClient.post('/ListarPreguntas', datos).then((e)=>{
+            //console.log(e.respuesta);
+            setdato(e.respuesta);
+          });
         }
-      return () => {
-      };
     }, []);
 
   return (
