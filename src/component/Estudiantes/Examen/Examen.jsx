@@ -4,6 +4,7 @@ import {
     useNavigate
   } from "react-router-dom";
 import InputPreguntasExamenEstudiante from './PreguntaExamen';
+import VerNota from './VerNota';
 
 
 const PreguntasExamenEstudiante = (props) => {
@@ -33,24 +34,8 @@ const PreguntasExamenEstudiante = (props) => {
         }
         
     }else{
-        RespuestasBandera = false
         respuestascorrectasauxarray = []
     }
-    // const [datos,setDatos] =  useState({
-    //     pregunta:[{
-    //         PreguntaExamen:"",
-    //     }],
-    //     respuestas:[
-    //         {
-    //             "iIdrespuestasExamen": "",
-    //             "EstadoRespuestaPreguntaExamen": "",
-    //             "respuestasPrguntasExamen": "",
-    //             "preguntasExamen_IdpreguntasExamen": ""
-    //         }
-    //     ]
-        
-
-    // });
 
     useEffect(()=>{
 
@@ -88,119 +73,13 @@ const PreguntasExamenEstudiante = (props) => {
 
 
     const handlePregunta = (e)=>{
-        console.log(e.target.name);
         setPregunta({
             ...pregunta,
             [e.target.name]: e.target.value
         })
     };
 
-    const handleSubmit = (e)=>{
-        e.preventDefault();
-
-        //console.log(e.target[3]);
-        let datos = e.target;
-        //console.log(datos[0]);
-        let respuesta =  respuestas;
-        console.log(respuesta);
-        let tipo , n = 0;
-
-        for (let index = 0; index < datos.length; index++) {
-            //console.log(datos[index])
-            if(datos[index].id != undefined ){
-                respuesta = respuesta.map((e)=>{
-                    //console.log(datos[index].id);
-                    if(datos[index].id == e.iIdrespuestasExamen){
-                        
-                        if(datos[index].name == 'respuestasPrguntasExamen'){
-                            return({...e,
-                                    [e.respuestasPrguntasExamen]:datos[index].value})
-                        }else if(datos[index].name == 'EstadoRespuestaPreguntaExamen'){
-                            console.log(e.EstadoRespuestaPreguntaExamen);
-                            let estado = datos[index].checked == true?1:0;
-                            //n = estado == 1?n+1:n+0;
-                            if(estado == 1){
-                              n = n + 1;
-                            }
-                            return({...e,
-                                    ['EstadoRespuestaPreguntaExamen']:estado}
-                            )
-                        }
-                    }else if(datos[index].name == 'tipo'){
-                        tipo = datos[index].value;
-                        console.log("tipo entro")
-                        setTipoPregunta(tipo);
-                    }
-                    return e;
-                })
-            }
-                                
-        }
-        console.log(pregunta)
-        console.log(respuesta);
-        console.log("n",n)
-        console.log("tipo",tipo)
-        if(tipo == 1 && n>1){
-            setEstado(true);
-        }else if(tipo == 0 && n == 1){
-          //console.log("pasa tipo 0")
-            setEstado(true);
-        }else{
-            setEstado(false);
-        }
-
-
-        if(estado){
-            console.log('ooooooooooooooooooooooooo')
-        }
-         //datos.map((e)=>{
-
-            //if(e.name == "respuestasPrguntasExamen"){
-              //  console.log(e);
-          // }
-
-            //return e;
-        //})
-        //console.log(respuestas);
-
-        
-
-    }
-
-    /*
-    useEffect(() => {
-      // Actualiza el título del documento usando la API del navegador
-      if(false){
-        console.log("entro useEffect");
-        let url = "http://localhost:3001/Update/Examen";
-        let datos = {
-            tipo : tipoPregunta,
-            pregunta: pregunta,
-            respuestas: respuestas
-        }
-        console.log(datos)
-        let datosApi = {
-            method: 'put',
-            body:JSON.stringify({
-                datos
-            }),
-            headers:{
-                'Content-Type': 'application/json',
-            }
-        } 
-        fetch(url,datosApi ).then((e)=>{
-                if(e.status === 200){
-                    return e.json();     
-                }else if(e.status >= 400){
-                    alert('Error');
-                }
-        }).then((e)=>{
-                    
-        });
-
-    }
-    },[estado]);
-    */
+   
 
     useEffect(() => {
        
@@ -261,10 +140,15 @@ const PreguntasExamenEstudiante = (props) => {
                     }
                 }
 
-                fetch("http://localhost:3001/ListarPreguntasRespuestas",datosApi).then((e)=>{
+                fetch("http://localhost:3001/Calificar",datosApi).then((e)=>{
                     return e.json(); 
                 }).then((e)=>{
-                    console.log(e);
+                    localStorage.removeItem('RespuestasSeleccionadas')
+                    localStorage.removeItem('Inicio')
+                    localStorage.removeItem('PreguntaActual')
+                    localStorage.removeItem('Fin')
+                    let nota = e.nota
+                    navigate(`/Estudiantes/VerNota/${id}/${nota}`);
                 });
             }
         }
@@ -331,7 +215,7 @@ const PreguntasExamenEstudiante = (props) => {
   </div>
   {/* /.card-header */}
   {/* form start */}
-        <form onSubmit={handleSubmit}>
+        <form >
             <div className="card-body">
             
            {/*  {/* /.form-group */}

@@ -25,6 +25,7 @@ import HacerExamen from "../component/Estudiantes/HacerExamen/HacerExamen";
 import PreguntasExamenEstudiante from "../component/Estudiantes/Examen/Examen";
 import ListasDePreguntas from "../component/Estudiantes/Examen/ListasDePreguntas";
 import LogrosEstudiante from "../component/Estudiantes/Logros/LogrosEstudiante";
+import VerNota from "../component/Estudiantes/Examen/VerNota";
 
 const AppRouter = () => {
 
@@ -51,6 +52,7 @@ const AppRouter = () => {
                 <Route path="HacerExamen/:id" element={<HacerExamen />}></Route>
                 <Route path="Examen/:id" element={<ListasDePreguntas />}></Route>
                 <Route path="Examen/:id/Pregunta/:idPregunta" element={<PreguntasExamenEstudiante />}></Route>
+                <Route path="VerNota/:id/:nota" element={<VerNota />}></Route>
                 
                 <Route path="Logros" element={<LogrosEstudiante />}></Route>
                 <Route path=""  element={<Context />} > 
