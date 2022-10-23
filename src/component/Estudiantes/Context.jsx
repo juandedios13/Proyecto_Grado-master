@@ -23,13 +23,13 @@ const Context = () => {
         },
         {
             unidad:'2',
-            name: "2.Numeros Naturales",
+            name: "2.Números Naturales",
             img:"img/planeta2.png",
             url:""
         },
         {
             unidad:'3',
-            name: "3.Teorias de números",
+            name: "3.Teorías de números",
             img:"img/planeta3.png",
             url:""
         },
