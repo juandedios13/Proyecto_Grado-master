@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { axiosClient } from '../../../config/axiosClient';
 
 const TablaContenidoTr = () => {
     const [dato, setdato] = useState([]);
@@ -9,27 +10,12 @@ const TablaContenidoTr = () => {
 
         
 
-        if(token != undefined && token != null ){
-            let tokenn = JSON.parse(token);
-            let datosApi = {  
-                method: 'get',
-                headers:{
-                    'Content-Type': 'application/json',
-                    'Authorization': JSON.stringify( tokenn.token)
-                }
-            }
-
-            fetch("http://localhost:3001/ListarContenido",datosApi).then((e)=>{
-                return e.json(); 
-            }).then((e)=>{
-                console.log(e.respuesta);
-                setdato(e.respuesta);
-            });
-        }else{
-            
+        if (token) {
+          axiosClient.get('/ListarContenido').then((e)=>{
+            console.log(e.respuesta);
+            setdato(e.respuesta);
+          });
         }
-      return () => {
-      };
     }, []);
 
   return (

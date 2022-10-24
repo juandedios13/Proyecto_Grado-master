@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { axiosClient } from '../../config/axiosClient';
 import Titulo from './Titulo';
 
 const Registro = () => {
@@ -24,44 +25,22 @@ const Registro = () => {
     }
 
     const handleSubmit = (e)=>{
-        e.preventDefault();
-
-        if(datos.Nombre != '' && datos.Apellidos != '' && datos.Correo != ''  && datos.Contrasena != ''){
-
-            
-            let datosApi = {
-                method: 'post',
-                method: 'post',
-                body:JSON.stringify({
-                    datos
-                }),
-                headers:{
-                    'Content-Type': 'application/json',
-                }
-            } 
-            console.log(datosApi);
-            fetch("http://localhost:3001/registarAdminDocente",datosApi ).then((e)=>{
-                    if(e.status === 200){
-                        return e.json();     
-                    }else if(e.status >= 400){
-                        alert('Error');
-                    }
-                }).then((e)=>{
-                        if(e.registro == 'true' || e.registro ){
-                            alert('Registro exitoso');
-                            setDatos({
-                                nombre:'',
-                                apellidos:'',
-                                correo:'',
-                                contrasena:'',
-                                tipo:tipo,
-                                edad:''
-                            })
-                        }
-                });
-
-        }
-
+      e.preventDefault();
+      if(datos.Nombre != '' && datos.Apellidos != '' && datos.Correo != ''  && datos.Contrasena != ''){
+        axiosClient('/registarAdminDocente', {datos}).then((e)=>{
+          if(e.registro == 'true' || e.registro ){
+            alert('Registro exitoso');
+            setDatos({
+                nombre:'',
+                apellidos:'',
+                correo:'',
+                contrasena:'',
+                tipo:tipo,
+                edad:''
+            })
+          }
+        });
+      }
     }
 
     const handleDatos = (e)=>{

@@ -3,6 +3,7 @@ import {
     useParams,
     useNavigate
   } from "react-router-dom";
+import { axiosClient } from '../../../config/axiosClient';
 import InputPreguntasExamenEstudiante from './PreguntaExamen';
 import VerNota from './VerNota';
 
@@ -45,30 +46,13 @@ const PreguntasExamenEstudiante = (props) => {
             datos:{IdpreguntasExamen:idPregunta}
         }
 
-        if(token != undefined && token != null ){
-            let tokenn = JSON.parse(token);
-            let datosApi = {  
-                method: 'post',
-                body: JSON.stringify(dato),
-                headers:{
-                    'Content-Type': 'application/json',
-                    'Authorization': JSON.stringify( tokenn.token)
-                }
-            }
-
-            console.log(datosApi)
-
-            fetch("http://localhost:3001/ListarPreguntasRespuestas",datosApi).then((e)=>{
-                return e.json(); 
-            }).then((e)=>{
-                console.log(e);
-                setPregunta(e.pregunta[0]);
-                setRespuestas(e.respuestas);
-            });
-        }else{
-            
+        if (token) {
+          axiosClient.post('/ListarPreguntasRespuestas', dato).then((e)=>{
+            console.log(e);
+            setPregunta(e.pregunta[0]);
+            setRespuestas(e.respuestas);
+          })
         }
-
     },[]);
 
 
@@ -123,32 +107,20 @@ const PreguntasExamenEstudiante = (props) => {
                 
 
             
-            if(token != undefined && token != null && RespuestasSeleccionadas != null ){
+            if(token && RespuestasSeleccionadas){
                 RespuestasSeleccionadas = JSON.parse(RespuestasSeleccionadas)
                 const dato = {
                     idexamen: {id},
                     datos:{RespuestasSeleccionadas}
                 }
-    
-                let tokenn = JSON.parse(token);
-                let datosApi = {  
-                    method: 'post',
-                    body: JSON.stringify(dato),
-                    headers:{
-                        'Content-Type': 'application/json',
-                        'Authorization': JSON.stringify( tokenn.token)
-                    }
-                }
 
-                fetch("http://localhost:3001/Calificar",datosApi).then((e)=>{
-                    return e.json(); 
-                }).then((e)=>{
-                    localStorage.removeItem('RespuestasSeleccionadas')
-                    localStorage.removeItem('Inicio')
-                    localStorage.removeItem('PreguntaActual')
-                    localStorage.removeItem('Fin')
-                    let nota = e.nota
-                    navigate(`/Estudiantes/VerNota/${id}/${nota}`);
+                axiosClient.post('/Calificar', dato).then((e)=>{
+                  localStorage.removeItem('RespuestasSeleccionadas')
+                  localStorage.removeItem('Inicio')
+                  localStorage.removeItem('PreguntaActual')
+                  localStorage.removeItem('Fin')
+                  let nota = e.nota
+                  navigate(`/Estudiantes/VerNota/${id}/${nota}`);
                 });
             }
         }

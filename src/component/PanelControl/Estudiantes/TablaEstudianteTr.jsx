@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
     Link
   } from "react-router-dom";
+import { axiosClient } from '../../../config/axiosClient';
 
 const TablaEstudianteTr = () => {
 
@@ -9,34 +10,17 @@ const TablaEstudianteTr = () => {
     const [dato, setdato] = useState([]);
     
     useEffect(() => {
+      let token = localStorage.getItem('token');
 
-        let token = localStorage.getItem('token');
+      const datos = {
+          datos:{tipo:"estudiante"}
+      }
 
-        const datos = {
-            datos:{tipo:"estudiante"}
-        }
-
-        if(token != undefined && token != null ){
-            let tokenn = JSON.parse(token);
-            let datosApi = {  
-                method: 'post',
-                body: JSON.stringify(datos),
-                headers:{
-                    'Content-Type': 'application/json',
-                    'Authorization': JSON.stringify( tokenn.token)
-                }
-            }
-
-            fetch("http://localhost:3001/Listar",datosApi).then((e)=>{
-                return e.json(); 
-            }).then((e)=>{
-                setdato(e.respuesta);
-            });
-        }else{
-            
-        }
-      return () => {
-      };
+      if (token) {
+        axiosClient.post('/Listar', datos).then((e)=>{
+          setdato(e.respuesta);
+        })
+      }
     }, []);
     
     let n = 0;
