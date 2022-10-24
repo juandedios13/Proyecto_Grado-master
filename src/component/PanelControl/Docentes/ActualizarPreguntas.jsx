@@ -201,7 +201,7 @@ const ActualizarPreguntas = (props) => {
             <div className="form-group text-left text-dark">
                 <label>Tipo de usuario</label>
                 <select id='select' onChange={()=>{}}  defaultValue={pregunta.tipoPregunta == 0?'Opción unica':'Opción múltiple'} name='tipo' className="form-control select2 select2-hidden-accessible" style={{ width: '100%' }} data-select2-id={9} tabIndex={-1} aria-hidden="true">
-                    <option value={'0'} >Opción unica</option>
+                    <option value={'0'} >Opción única</option>
                     <option value={'1'}>Opción múltiple</option>
                 </select>
             </div>

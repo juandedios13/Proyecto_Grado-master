@@ -143,7 +143,7 @@ const Usuario = () => {
             </div>
 
             <div className="form-group text-left text-dark">
-                <label className='' htmlFor="exampleInputEmail1">Correo electronico</label>
+                <label className='' htmlFor="exampleInputEmail1">Correo electrónico</label>
                 <input type="email" className="form-control" value={datos.correo} name='correo' placeholder="Correo electronico" onChange={handleDatos} />
             </div>
             <div className="form-group text-left text-dark">

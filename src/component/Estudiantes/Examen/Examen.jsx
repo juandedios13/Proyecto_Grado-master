@@ -221,7 +221,7 @@ const PreguntasExamenEstudiante = (props) => {
            {/*  {/* /.form-group */}
             <div className="form-group text-left text-dark">
                 <label>Tipo de pregunta</label>
-                <input className="form-control" readOnly={true}  type="text" Value={pregunta.tipoPregunta == 0?'Opción unica':'Opción múltiple'}  />
+                <input className="form-control" readOnly={true}  type="text" Value={pregunta.tipoPregunta == 0?'Opción única':'Opción múltiple'}  />
             </div> 
 
             

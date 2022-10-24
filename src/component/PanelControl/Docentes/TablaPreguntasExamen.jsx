@@ -20,7 +20,7 @@ const TablaPreguntasExamen = () => {
                 <th scope="col">#</th>
                 <th scope="col">Examen</th>
                 <th scope="col">Pregunta</th>
-                <th scope="col">Numero de respuestas</th>
+                <th scope="col">Número de respuestas</th>
                 <th scope="col">tipo de pregunta</th>
                 <th scope="col">Visualizar</th>
               </tr>
