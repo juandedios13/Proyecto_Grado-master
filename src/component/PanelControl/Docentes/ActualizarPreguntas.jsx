@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
     useParams
   } from "react-router-dom";
+import { axiosClient } from '../../../config/axiosClient';
 import InputActualizarPreguntas from './InputActualizarPreguntas';
 
 const ActualizarPreguntas = (props) => {
@@ -37,24 +38,12 @@ const ActualizarPreguntas = (props) => {
             datos:{IdpreguntasExamen:id}
         }
 
-        if(token != undefined && token != null ){
-            let tokenn = JSON.parse(token);
-            let datosApi = {  
-                method: 'post',
-                body: JSON.stringify(dato),
-                headers:{
-                    'Content-Type': 'application/json',
-                    'Authorization': JSON.stringify( tokenn.token)
-                }
-            }
-
-            fetch("http://localhost:3001/ListarPreguntasRespuestas",datosApi).then((e)=>{
-                return e.json(); 
-            }).then((e)=>{
-                console.log(e);
-                setPregunta(e.pregunta[0]);
-                setRespuestas(e.respuestas);
-            });
+        if (token) {
+          axiosClient.post('/ListarPreguntasRespuestas', dato).then((e)=>{
+            console.log(e);
+            setPregunta(e.pregunta[0]);
+            setRespuestas(e.respuestas);
+          });
         }else{
             
         }
@@ -153,31 +142,17 @@ const ActualizarPreguntas = (props) => {
       // Actualiza el título del documento usando la API del navegador
       if(false){
         console.log("entro useEffect");
-        let url = "http://localhost:3001/Update/Examen";
         let datos = {
             tipo : tipoPregunta,
             pregunta: pregunta,
             respuestas: respuestas
         }
         console.log(datos)
-        let datosApi = {
-            method: 'put',
-            body:JSON.stringify({
-                datos
-            }),
-            headers:{
-                'Content-Type': 'application/json',
-            }
-        } 
-        fetch(url,datosApi ).then((e)=>{
-                if(e.status === 200){
-                    return e.json();     
-                }else if(e.status >= 400){
-                    alert('Error');
-                }
-        }).then((e)=>{
-                    
-        });
+        axiosClient.put('/Update/Examen', datos).then((e)=>{
+          
+        }).catch(() => {
+          alert('error')
+        })
 
     }
     },[estado]);
@@ -201,7 +176,7 @@ const ActualizarPreguntas = (props) => {
             <div className="form-group text-left text-dark">
                 <label>Tipo de usuario</label>
                 <select id='select' onChange={()=>{}}  defaultValue={pregunta.tipoPregunta == 0?'Opción unica':'Opción múltiple'} name='tipo' className="form-control select2 select2-hidden-accessible" style={{ width: '100%' }} data-select2-id={9} tabIndex={-1} aria-hidden="true">
-                    <option value={'0'} >Opción unica</option>
+                    <option value={'0'} >Opción única</option>
                     <option value={'1'}>Opción múltiple</option>
                 </select>
             </div>

@@ -15,7 +15,7 @@ const TablaEstudiantes = () => {
             <th scope="col">Apellidos</th>
             <th scope="col">Edad</th>
             <th scope='col'>Editar</th>
-            <th scope='col'>ELiminar</th>
+            <th scope='col'>Eliminar</th>
           </tr>
         </thead>
         <tbody>

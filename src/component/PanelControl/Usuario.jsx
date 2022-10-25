@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import {
     useParams
   } from "react-router-dom";
+import { axiosClient } from '../../config/axiosClient';
 
 const Usuario = () => {
 
@@ -29,40 +30,24 @@ const Usuario = () => {
                 correo:correo
             }
         }
-        if(token != undefined && token != null ){
-            let tokenn = JSON.parse(token);
-            let datosApi = {  
-                method: 'post',
-                body: JSON.stringify(dato),
-                headers:{
-                    'Content-Type': 'application/json',
-                    'Authorization': JSON.stringify( tokenn.token)
-                }
+        if(token) {
+          axiosClient.post('/ListarUsuario', dato).then((e)=>{
+            let edad = '';
+            if(e.respuesta[0].tipoUsuario == 'estudiante' || e.respuesta[0].tipoUsuario == "Estudiante"){
+                edad = e.respuesta[0].estudianteEdad;
+                setTipo("Estudiante");
             }
-            fetch("http://localhost:3001/ListarUsuario",datosApi).then((e)=>{
-                return e.json(); 
-            }).then((e)=>{
-                let edad = '';
-                if(e.respuesta[0].tipoUsuario == 'estudiante' || e.respuesta[0].tipoUsuario == "Estudiante"){
-                    edad = e.respuesta[0].estudianteEdad;
-                    setTipo("Estudiante");
-                }
-                setDatos({
-                    id:e.respuesta[0].Idusuario,
-                    nombre:e.respuesta[0].NombreUsario,
-                    apellidos:e.respuesta[0].ApellidoUsuario,
-                    correo:e.respuesta[0].CorreoUsuario,
-                    contrasena:'',
-                    tipo:e.respuesta[0].tipoUsuario,
-                    edad: edad
-                })
-
-            });
-        }else{
-            
+            setDatos({
+                id:e.respuesta[0].Idusuario,
+                nombre:e.respuesta[0].NombreUsario,
+                apellidos:e.respuesta[0].ApellidoUsuario,
+                correo:e.respuesta[0].CorreoUsuario,
+                contrasena:'',
+                tipo:e.respuesta[0].tipoUsuario,
+                edad: edad
+            })
+          });
         }
-      return () => {
-      };
     }, []);
 
 
@@ -79,32 +64,19 @@ const Usuario = () => {
         e.preventDefault();
 
         if(datos.Nombre != '' && datos.Apellidos != '' && datos.Correo != ''  && datos.Contrasena != ''){
+            let url = "/Update";
 
-            let url = "http://localhost:3001/Update";
-            
-            let datosApi = {
-                method: 'put',
-                body:JSON.stringify({
-                    datos
-                }),
-                headers:{
-                    'Content-Type': 'application/json',
-                }
-            } 
             if(datos.tipo == "Estudiante" || datos.tipo == "estudiante"){
-                url = "http://localhost:3001/Update/Estudiante";
+                url = "/Update/Estudiante";
             }
-            fetch(url,datosApi ).then((e)=>{
-                    if(e.status === 200){
-                        return e.json();     
-                    }else if(e.status >= 400){
-                        alert('Error');
-                    }
-                }).then((e)=>{
-                        if(e.registro == 'true' || e.registro ){
-                            alert('Registro exitoso');
-                        }
-                });
+
+            axiosClient.put(url, {datos}).then((e)=>{
+              if(e.registro == 'true' || e.registro ){
+                  alert('Registro exitoso');
+              }
+            }).catch(() => {
+              alert('Error al actualizar')
+            })
 
         }
 
@@ -143,7 +115,7 @@ const Usuario = () => {
             </div>
 
             <div className="form-group text-left text-dark">
-                <label className='' htmlFor="exampleInputEmail1">Correo electronico</label>
+                <label className='' htmlFor="exampleInputEmail1">Correo electrónico</label>
                 <input type="email" className="form-control" value={datos.correo} name='correo' placeholder="Correo electronico" onChange={handleDatos} />
             </div>
             <div className="form-group text-left text-dark">

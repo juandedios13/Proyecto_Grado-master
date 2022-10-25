@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {
     Link
   } from "react-router-dom";
+import { axiosClient } from '../../../config/axiosClient';
 
 const TablaDocenteTr = () => {
 
@@ -27,11 +28,9 @@ const TablaDocenteTr = () => {
                 }
             }
 
-            fetch("http://localhost:3001/Listar",datosApi).then((e)=>{
-                return e.json(); 
-            }).then((e)=>{
+            axiosClient.post('/Listar', datos).then((e)=>{
                 //console.log(e.respuesta);
-                setdato(e.respuesta);
+              setdato(e.respuesta);
             });
         }else{
             

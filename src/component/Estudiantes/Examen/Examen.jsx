@@ -46,30 +46,13 @@ const PreguntasExamenEstudiante = (props) => {
             datos:{IdpreguntasExamen:idPregunta}
         }
 
-        if(token != undefined && token != null ){
-            let tokenn = JSON.parse(token);
-            let datosApi = {  
-                method: 'post',
-                body: JSON.stringify(dato),
-                headers:{
-                    'Content-Type': 'application/json',
-                    'Authorization': JSON.stringify( tokenn.token)
-                }
-            }
-
-            console.log(datosApi)
-
-            fetch("http://localhost:3001/ListarPreguntasRespuestas",datosApi).then((e)=>{
-                return e.json(); 
-            }).then((e)=>{
-                console.log(e);
-                setPregunta(e.pregunta[0]);
-                setRespuestas(e.respuestas);
-            });
-        }else{
-            
+        if (token) {
+          axiosClient.post('/ListarPreguntasRespuestas', dato).then((e)=>{
+            console.log(e);
+            setPregunta(e.pregunta[0]);
+            setRespuestas(e.respuestas);
+          })
         }
-
     },[]);
 
 
@@ -227,7 +210,7 @@ const PreguntasExamenEstudiante = (props) => {
            {/*  {/* /.form-group */}
             <div className="form-group text-left text-dark">
                 <label>Tipo de pregunta</label>
-                <input className="form-control" readOnly={true}  type="text" Value={pregunta.tipoPregunta == 0?'Opción unica':'Opción múltiple'}  />
+                <input className="form-control" readOnly={true}  type="text" Value={pregunta.tipoPregunta == 0?'Opción única':'Opción múltiple'}  />
             </div> 
 
             

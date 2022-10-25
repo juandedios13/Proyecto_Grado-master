@@ -12,7 +12,7 @@ const TablaExamen = () => {
                 <th scope="col">#</th>
                 <th scope="col">Unidad</th>
                 <th scope="col">Nombre Examen</th>
-                <th scope="col">Numero de preguntas</th>
+                <th scope="col">Número de preguntas</th>
                 <th scope="col">Visualizar</th>
               </tr>
             </thead>

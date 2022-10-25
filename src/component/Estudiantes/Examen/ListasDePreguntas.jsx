@@ -4,6 +4,7 @@ import {
     useParams,
     useNavigate
   } from "react-router-dom";
+import { axiosClient } from '../../../config/axiosClient';
 
 const ListasDePreguntas = () => {
 
@@ -21,31 +22,15 @@ const ListasDePreguntas = () => {
             datos:{idexamen:id}
         }
 
-        if(token != undefined && token != null ){
-            let tokenn = JSON.parse(token);
-            let datosApi = {  
-                method: 'post',
-                body: JSON.stringify(datos),
-                headers:{
-                    'Content-Type': 'application/json',
-                    'Authorization': JSON.stringify( tokenn.token)
-                }
-            }
-
-            fetch("http://localhost:3001/ListarPreguntas",datosApi).then((e)=>{
-                return e.json(); 
-            }).then((e)=>{
-                console.log(e.respuesta);
-                let ultimo = e.respuesta.length - 1;
-                localStorage.setItem("Inicio" ,JSON.stringify(e.respuesta[0].IdpreguntasExamen));
-                localStorage.setItem("Fin" ,JSON.stringify(e.respuesta[ultimo].IdpreguntasExamen));
-                setdato(e.respuesta);
-            });
-        }else{
-            
+        if (token) {
+          axiosClient.post('/ListarPreguntas', datos).then((e)=> {
+            console.log(e.respuesta);
+            let ultimo = e.respuesta.length - 1;
+            localStorage.setItem("Inicio" ,JSON.stringify(e.respuesta[0].IdpreguntasExamen));
+            localStorage.setItem("Fin" ,JSON.stringify(e.respuesta[ultimo].IdpreguntasExamen));
+            setdato(e.respuesta);
+          });
         }
-      return () => {
-      };
     }, []);
 
     const handleclickPreguntas = (idPregunta)=>{

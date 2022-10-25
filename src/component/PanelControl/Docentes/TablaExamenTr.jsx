@@ -2,40 +2,21 @@ import React, { useEffect, useState } from 'react';
 import {
     Link
   } from "react-router-dom";
+import { axiosClient } from '../../../config/axiosClient';
 
 const TablaExamenTr = () => {
    
     const [dato, setdato] = useState([]);
     
     useEffect(() => {
+      let token = localStorage.getItem('token')
 
-        let token = localStorage.getItem('token');
-
-        const datos = {
-            datos:{tipo:"docente"}
-        }
-
-        if(token != undefined && token != null ){
-            let tokenn = JSON.parse(token);
-            let datosApi = {  
-                method: 'get',
-                headers:{
-                    'Content-Type': 'application/json',
-                    'Authorization': JSON.stringify( tokenn.token)
-                }
-            }
-
-            fetch("http://localhost:3001/ListarExamenes",datosApi).then((e)=>{
-                return e.json(); 
-            }).then((e)=>{
-                //console.log(e.respuesta);
-                setdato(e.respuesta);
-            });
-        }else{
-            
-        }
-      return () => {
-      };
+      if (token) {
+        axiosClient.get('/ListarExamenes').then((e)=>{
+          //console.log(e.respuesta);
+          setdato(e.respuesta);
+        });
+      }
     }, []);
 
   return (
