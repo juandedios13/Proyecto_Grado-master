@@ -26,6 +26,10 @@ const ContextEstudiante = () => {
     navigate(`/Estudiantes/Logros`);
   }
 
+  const handleclickCalificaciones = ()=>{
+    navigate(`/Estudiantes/Calificaciones`);
+  }
+
 //<Header></Header>  
   return (
     <>
@@ -38,6 +42,9 @@ const ContextEstudiante = () => {
         </p>
         <p onClick={handleclickLogros}>
           Logros
+        </p>
+        <p onClick={handleclickCalificaciones}>
+          Calificaciones
         </p>
         <button type="button" onClick={handleclick} className="btn btn-primary mr-4">Salir</button>
       </div>

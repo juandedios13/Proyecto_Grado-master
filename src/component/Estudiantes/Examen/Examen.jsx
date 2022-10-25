@@ -3,6 +3,7 @@ import {
     useParams,
     useNavigate
   } from "react-router-dom";
+import { axiosClient } from '../../../config/axiosClient';
 import InputPreguntasExamenEstudiante from './PreguntaExamen';
 import VerNota from './VerNota';
 
@@ -120,36 +121,41 @@ const PreguntasExamenEstudiante = (props) => {
 
             let token = localStorage.getItem('token');
             let RespuestasSeleccionadas = localStorage.getItem('RespuestasSeleccionadas')
-                
-
-            
-            if(token != undefined && token != null && RespuestasSeleccionadas != null ){
+              
+            if(RespuestasSeleccionadas != null ){
                 RespuestasSeleccionadas = JSON.parse(RespuestasSeleccionadas)
                 const dato = {
                     idexamen: {id},
                     datos:{RespuestasSeleccionadas}
                 }
-    
-                let tokenn = JSON.parse(token);
-                let datosApi = {  
-                    method: 'post',
-                    body: JSON.stringify(dato),
-                    headers:{
-                        'Content-Type': 'application/json',
-                        'Authorization': JSON.stringify( tokenn.token)
-                    }
-                }
-
-                fetch("http://localhost:3001/Calificar",datosApi).then((e)=>{
-                    return e.json(); 
-                }).then((e)=>{
+                axiosClient.post('/Calificar',{ dato }).then(({ data })=>{
                     localStorage.removeItem('RespuestasSeleccionadas')
                     localStorage.removeItem('Inicio')
                     localStorage.removeItem('PreguntaActual')
                     localStorage.removeItem('Fin')
-                    let nota = e.nota
+                    let nota = data.nota
                     navigate(`/Estudiantes/VerNota/${id}/${nota}`);
                 });
+                // let tokenn = JSON.parse(token);
+                // let datosApi = {  
+                //     method: 'post',
+                //     body: JSON.stringify(dato),
+                //     headers:{
+                //         'Content-Type': 'application/json',
+                //         'Authorization': JSON.stringify( tokenn.token)
+                //     }
+                // }
+
+                // fetch("http://localhost:3001/Calificar",datosApi).then((e)=>{
+                //     return e.json(); 
+                // }).then((e)=>{
+                //     localStorage.removeItem('RespuestasSeleccionadas')
+                //     localStorage.removeItem('Inicio')
+                //     localStorage.removeItem('PreguntaActual')
+                //     localStorage.removeItem('Fin')
+                //     let nota = e.nota
+                //     navigate(`/Estudiantes/VerNota/${id}/${nota}`);
+                // });
             }
         }
     }

@@ -1,0 +1,263 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(img/fondoTema.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+
+.contenedornotasexamen{
+    margin: 80px auto;
+    width: 90%;
+    height: 700px;
+    /* background-color: rgba(0, 0, 0, .5);
+    display: flex;
+    flex-wrap:wrap; */
+
+    background-color: rgba(255, 255, 255, .6);
+    display: flex;
+    flex-wrap:wrap;
+    border-radius: 200px 15px 200px 15px;
+    transition: 2s;
+    justify-content: space-around;
+    /* position: absolute; */
+
+}
+
+.contenedornotasexamen:hover{
+    border-radius: 15px 200px 15px 200px;
+}
+
+.tablanotas{
+    width: 90%;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.tablass{
+    width: 100%;
+    transition: 2s;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: #fff;
+}
+
+table{
+    text-align: left;
+    border-collapse: collapse;
+}
+
+th, td{
+    
+    border: 1px solid rgba(0, 0, 0, .5);
+    padding: 10px;
+    border-radius: 5px;
+
+    color: #000000;
+    letter-spacing: 2px;
+    font-size: 20px;
+    transition: 2s;
+    background: none;
+    
+    font-weight: bold;
+    
+}
+
+.imgdos{
+    /* background-color: #000000; */
+}
+
+th:hover, td:hover{
+    border-radius: solid 10px rgb(255, 255, 255);
+    background: #b11bdf;
+    box-shadow: 0 0 50px #f9eefc, 0 0 50px #a945c7, 0 0 80px #a945c7;
+    transition-delay:0.3s ;
+    color: aliceblue;
+    border: 1px solid white;
+   
+}
+
+img{
+    width: 300px;
+   padding: 20px;
+    transition: 2s;
+}
+
+img:hover{
+    width: 350px;
+}
+
+
+
+.img22{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+}
+
+
+
+/* .tablass:hover{
+    width: 95%;
+} */
+
+.btnatencion{
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnatencion input[type="button"]{
+    width: 200px;
+    height: 100px;
+    padding: 10px 15px;
+    border-radius: 30px;
+    /* color: rgb(157, 54, 253); */
+    color: #000000;
+    letter-spacing: 2px;
+    font-size: 23px;
+    transition: 2s;
+    background: none;
+    border: solid 1px#000000 ;
+    font-weight: bold;
+    background: rgba(252, 252, 252, 0.9);
+}
+
+.btnatencion input[type="button"]:hover{
+    background: #780e99;
+    box-shadow: 0 0 50px #f9eefc, 0 0 50px #a945c7, 0 0 80px #a945c7;
+    transition-delay:0.3s ;
+    color: aliceblue;
+    border: solid 1px rgb(255, 255, 255);
+}
+
+.abtnaten{
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1000px) {
+    img{
+        width: 255px;
+    }
+    td, th{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    img{
+        width: 250px;
+    }
+    td, th{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    
+    .contenedornotasexamen{
+        
+        /* transform: rotate(180deg); */
+
+        /* justify-content: space-around; */
+    }
+
+    .tablanotas{
+        writing-mode: vertical-lr;
+        padding: 0;
+        height: 100%;
+        
+    }
+
+    .img22{
+        width: 50%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+    }
+
+   
+
+    .abtnaten input[type="button"]{
+        width: 100px;
+        height: 50pxk;
+        font-size: 10px;
+    }
+
+    td, th{
+        transform: rotate(270deg);
+        font-size: 15px;
+        /* width: 50%; */
+        height: 20px;
+        padding: 0;
+    }
+
+    img, .imgdos, .imgtres{
+       display: none; 
+    }
+
+    .contenedornotasexamen{
+        border-radius:0px;
+    }
+    .btnatencion input[type="button"]{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 510px) {
+    td, th{
+        font-size: 15px;
+        padding: 0;
+        height: 20px;
+    }
+    .tablanotas{
+        height: 100%;
+        padding: 0px;
+        /* font-size: 10px; */
+    }
+    .btnatencion input[type="button"]{
+        font-size: 15px;
+    }
+    .contenedornotasexamen{
+        border-radius:0px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+   
+    .tablanotas{
+        height: 100%;
+        padding: 0;
+        margin: 0;
+        /* font-size: 10px; */
+    }
+
+    td, th{
+        font-size: 15px;
+        /* height: 20px; */
+    }
+
+    .contenedornotasexamen{
+        border-radius:0px;
+    }
+
+    .btnatencion input[type="button"]{
+        font-size: 15px;
+    }
+
+
+}

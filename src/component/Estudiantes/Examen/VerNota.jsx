@@ -5,14 +5,15 @@ import {
     useNavigate
   } from "react-router-dom";
 import { axiosClient } from '../../../config/axiosClient';
+import imageAprobo from '../../../style/img/aprobado.png';
+import imagePerdio from '../../../style/img/noaprobado.png';
 
 const VerNota = (props) => {
 
     let navigate = useNavigate();
     const {id,nota} = useParams();
     let nombreExamen = ''
-    let textoPaso = 'Felicidades pasaste el examen con una nota de ' + nota;
-    let textoPerdio = 'No te preocupes pues volver a mirar los contenidos de la unidad para repasar los temas. La note de tu examen es ' + nota;
+    let texto = ' Calificación : ' + nota +' puntos de 10';
     useEffect(() => {
 
        
@@ -50,9 +51,10 @@ const VerNota = (props) => {
             </div>
             <div className='d-flex center flex-wrap justify-content-around m-2'>
                 <div className="card" style={{width: '20rem'}}>
+                    <img className="card-img-top" src={nota > 5 ?imageAprobo:imagePerdio} alt="Card image cap" />
                     <div className="card-body">
                         <p className="card-text text-dark font-weight-bold" >{
-                            nota > 5 ?textoPaso:textoPerdio
+                            texto
                         }</p>
                     </div>
                 </div>
