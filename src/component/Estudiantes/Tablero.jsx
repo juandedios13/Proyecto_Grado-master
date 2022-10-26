@@ -25,13 +25,13 @@ const Tablero = () => {
     }
 
     if (token) {
-        axiosClient.post('/ListarSubContenidoCompleto', dato).then((e)=>{
-          console.log(e.ress[0])
-          setDatos(e.ress[0])
+        axiosClient.post('/ListarSubContenidoCompleto', dato).then(({data})=>{
+          console.log(data.ress[0])
+          setDatos(data.ress[0])
           return axiosClient.post('/ListarSubContenidoAnteriorSiguente', dato)
-        }).then((e)=>{
-          setIdSubConAnterior(e[0].anterior.idSubContenidoDetalle);
-          setIdSubConSiguiente(e[0].siguiente.idSubContenidoDetalle);
+        }).then(({data})=>{
+          setIdSubConAnterior(data[0].anterior.idSubContenidoDetalle);
+          setIdSubConSiguiente(data[0].siguiente.idSubContenidoDetalle);
         })
     }
 },[]);  

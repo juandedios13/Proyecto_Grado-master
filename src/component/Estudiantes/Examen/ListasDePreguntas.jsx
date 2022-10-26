@@ -23,12 +23,12 @@ const ListasDePreguntas = () => {
         }
 
         if (token) {
-          axiosClient.post('/ListarPreguntas', datos).then((e)=> {
-            console.log(e.respuesta);
-            let ultimo = e.respuesta.length - 1;
-            localStorage.setItem("Inicio" ,JSON.stringify(e.respuesta[0].IdpreguntasExamen));
-            localStorage.setItem("Fin" ,JSON.stringify(e.respuesta[ultimo].IdpreguntasExamen));
-            setdato(e.respuesta);
+          axiosClient.post('/ListarPreguntas', datos).then(({data})=> {
+            console.log(data.respuesta);
+            let ultimo = data.respuesta.length - 1;
+            localStorage.setItem("Inicio" ,JSON.stringify(data.respuesta[0].IdpreguntasExamen));
+            localStorage.setItem("Fin" ,JSON.stringify(data.respuesta[ultimo].IdpreguntasExamen));
+            setdato(data.respuesta);
           });
         }
     }, []);
