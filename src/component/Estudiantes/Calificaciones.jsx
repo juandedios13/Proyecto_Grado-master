@@ -15,7 +15,7 @@ const Calificaciones = (props) => {
     const [Notas, setNotas] = useState([]);
     useEffect  (() => {
 
-         axiosClient.get(`/Calificaciones`).then(({ data }) => {
+         axiosClient.post(`/Calificaciones`).then(({ data }) => {
             console.log(data)
             setNotas(data.Notas)
             

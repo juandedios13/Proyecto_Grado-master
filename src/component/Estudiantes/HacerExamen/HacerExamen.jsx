@@ -30,9 +30,11 @@ const HacerExamen = () => {
      imageSiete,
      imageOcho
     ] 
-
+    const dato = {
+      datos:{id:id}
+  }
     const handleClickAdelante = ()=>{
-      axiosClient.get(`/ValidarExamen/${id}`).then(({ data }) => {
+      axiosClient.post(`/ValidarExamen`,dato).then(({ data }) => {
         if (data.finalizado) {
           alert('Ya has realizado este examen')
 
