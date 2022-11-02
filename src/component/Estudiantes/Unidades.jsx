@@ -13,7 +13,7 @@ const Unidades = (props) => {
             datos.map((e)=>{
                 return (
                     <div key={e.unidad} className="unidad">
-                        <img src={`../../assets/${e.img}`} onClick={() => handleclick(e.unidad)} alt= "No se ve" />
+                        <img className='unidadimg' src={`../../assets/${e.img}`} onClick={() => handleclick(e.unidad)} alt= "No se ve" />
                         <input type="button" defaultValue={e.name} onClick={ ()=> handleclick(e.unidad)} />
                     </div>
                 )

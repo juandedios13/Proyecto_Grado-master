@@ -50,7 +50,7 @@ const Context = () => {
         {
             unidad:'6',
             name: "6.Decimales",
-            img:"img/planeta2.png",
+            img:"img/planeta6.png",
             url:""
         },
         {

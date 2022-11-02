@@ -35,11 +35,11 @@
     
 }
 
-.primeraileraUnidades img, .segundaileraUnidades img{
+.primeraileraUnidades .unidadimg, .segundaileraUnidades .unidadimg{
     width: 150px;
 }
 
-.primeraileraUnidades img:hover, .segundaileraUnidades img:hover{
+.primeraileraUnidades .unidadimg:hover, .segundaileraUnidades .unidadimg:hover{
     border-radius: 100px;
     box-shadow: 0 0 50px #f9eefc, 0 0 50px #a945c7, 0 0 80px #a945c7;
     transition-delay:0.3s ;
