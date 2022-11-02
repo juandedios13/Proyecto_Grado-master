@@ -38,7 +38,7 @@ const Calificaciones = (props) => {
                 <table className="tablass">
                 <tbody>
                     <tr className="tablasstr">
-                        <th className="tablassth">Melgar </th>
+                        <th className="tablassth"> </th>
                         <th className="tablassth">Unidad 1</th>
                         <th className="tablassth">Unidad 2</th>
                         <th className="tablassth">Unidad 3</th>

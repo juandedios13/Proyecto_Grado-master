@@ -33,21 +33,21 @@ const ContextEstudiante = () => {
 //<Header></Header>  
   return (
     <>
-      <div className="page-header bg-light d-flex justify-content-between pt-2 pb-2">
-        <p className="ml-4">
+      <nav className="navbar navbar-dark bg-dark justify-content d-flex align-items-center">
+        <button className="border border-white btn btn-primary mr-4 nav-item">
             {tokenn.nombre} {tokenn.apellido}
-        </p>
-        <p onClick={handleclickUnidades}>
+        </button>
+        <button className='border border-white btn btn-dark nav-item' onClick={handleclickUnidades}>
           Unidades
-        </p>
-        <p onClick={handleclickLogros}>
+        </button>
+        <button className='border border-white btn btn-dark nav-item' onClick={handleclickLogros}>
           Logros
-        </p>
-        <p onClick={handleclickCalificaciones}>
+        </button>
+        <button className='border border-white btn btn-dark nav-item' onClick={handleclickCalificaciones}>
           Calificaciones
-        </p>
-        <button type="button" onClick={handleclick} className="btn btn-primary mr-4">Salir</button>
-      </div>
+        </button>
+        <button type="button" onClick={handleclick} className="border border-white btn btn-primary mr-4">Salir</button>
+      </nav>
       <Outlet>
               
       </Outlet> 
