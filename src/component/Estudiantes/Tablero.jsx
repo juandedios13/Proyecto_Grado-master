@@ -73,7 +73,7 @@ const handleClickAdelante = ()=>{
         </p>
         <div className='TableroDivImg'>
           {
-            datos.SubContenidoImg == null?<></>:<img className='imgcontenido' src={REACT_APP_BACKEND_DEV_HOST+datos.SubContenidoImg}></img>
+            datos.SubContenidoImg == null?<></>:<img className='imgcontenido' src={process.env[`REACT_APP_BACKEND_${process.env.REACT_APP_ENV === 'dev' ? 'DEV' : 'PROD'}_HOST`]+datos.SubContenidoImg}></img>
           }
         </div>
       </div>
