@@ -31,19 +31,19 @@ const Usuario = () => {
             }
         }
         if(token) {
-          axiosClient.post('/ListarUsuario', dato).then((e)=>{
+          axiosClient.post('/ListarUsuario', dato).then(({data})=>{
             let edad = '';
-            if(e.respuesta[0].tipoUsuario == 'estudiante' || e.respuesta[0].tipoUsuario == "Estudiante"){
-                edad = e.respuesta[0].estudianteEdad;
+            if(data.respuesta[0].tipoUsuario == 'estudiante' || data.respuesta[0].tipoUsuario == "Estudiante"){
+                edad = data.respuesta[0].estudianteEdad;
                 setTipo("Estudiante");
             }
             setDatos({
-                id:e.respuesta[0].Idusuario,
-                nombre:e.respuesta[0].NombreUsario,
-                apellidos:e.respuesta[0].ApellidoUsuario,
-                correo:e.respuesta[0].CorreoUsuario,
+                id:data.respuesta[0].Idusuario,
+                nombre:data.respuesta[0].NombreUsario,
+                apellidos:data.respuesta[0].ApellidoUsuario,
+                correo:data.respuesta[0].CorreoUsuario,
                 contrasena:'',
-                tipo:e.respuesta[0].tipoUsuario,
+                tipo:data.respuesta[0].tipoUsuario,
                 edad: edad
             })
           });

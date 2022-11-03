@@ -12,9 +12,9 @@ const TablaExamenTr = () => {
       let token = localStorage.getItem('token')
 
       if (token) {
-        axiosClient.get('/ListarExamenes').then((e)=>{
+        axiosClient.get('/ListarExamenes').then(({data})=>{
           //console.log(e.respuesta);
-          setdato(e.respuesta);
+          setdato(data.respuesta);
         });
       }
     }, []);
