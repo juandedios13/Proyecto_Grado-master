@@ -28,9 +28,9 @@ const TablaDocenteTr = () => {
                 }
             }
 
-            axiosClient.post('/Listar', datos).then((e)=>{
+            axiosClient.post('/Listar', datos).then(({data})=>{
                 //console.log(e.respuesta);
-              setdato(e.respuesta);
+              setdato(data.respuesta);
             });
         }else{
             

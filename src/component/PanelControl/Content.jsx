@@ -9,7 +9,6 @@ export const Content = () => {
   let url = window.location.href;
   let urltemp = url;
   let sinCOntenido = false
-  console.log("Prueba de sonido "+url+" otro "+urltemp );
   if(url.includes("Panel") && !url.includes("Panel/") ){
     sinCOntenido = true
     console.log("Sin contenido");

@@ -27,8 +27,8 @@ const Registro = () => {
     const handleSubmit = (e)=>{
       e.preventDefault();
       if(datos.Nombre != '' && datos.Apellidos != '' && datos.Correo != ''  && datos.Contrasena != ''){
-        axiosClient('/registarAdminDocente', {datos}).then((e)=>{
-          if(e.registro == 'true' || e.registro ){
+        axiosClient('/registarAdminDocente', {datos}).then(({data})=>{
+          if(data.registro == 'true' || data.registro ){
             alert('Registro exitoso');
             setDatos({
                 nombre:'',

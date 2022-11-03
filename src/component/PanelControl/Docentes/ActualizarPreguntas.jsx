@@ -39,10 +39,10 @@ const ActualizarPreguntas = (props) => {
         }
 
         if (token) {
-          axiosClient.post('/ListarPreguntasRespuestas', dato).then((e)=>{
-            console.log(e);
-            setPregunta(e.pregunta[0]);
-            setRespuestas(e.respuestas);
+          axiosClient.post('/ListarPreguntasRespuestas', dato).then(({data})=>{
+            console.log(data);
+            setPregunta(data.pregunta[0]);
+            setRespuestas(data.respuestas);
           });
         }else{
             

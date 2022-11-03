@@ -19,9 +19,9 @@ const TablaPreguntasExamenTr = (props) => {
         }
 
         if (token) {
-          axiosClient.post('/ListarPreguntas', datos).then((e)=>{
+          axiosClient.post('/ListarPreguntas', datos).then(({data})=>{
             //console.log(e.respuesta);
-            setdato(e.respuesta);
+            setdato(data.respuesta);
           });
         }
     }, []);

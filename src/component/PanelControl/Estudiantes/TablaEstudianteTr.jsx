@@ -17,8 +17,8 @@ const TablaEstudianteTr = () => {
       }
 
       if (token) {
-        axiosClient.post('/Listar', datos).then((e)=>{
-          setdato(e.respuesta);
+        axiosClient.post('/Listar', datos).then(({data})=>{
+          setdato(data.respuesta);
         })
       }
     }, []);

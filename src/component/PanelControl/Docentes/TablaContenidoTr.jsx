@@ -11,9 +11,8 @@ const TablaContenidoTr = () => {
         
 
         if (token) {
-          axiosClient.post('/ListarContenido').then((e)=>{
-            console.log(e.respuesta);
-            setdato(e.respuesta);
+          axiosClient.post('/ListarContenido').then(({data})=>{
+            setdato(data.respuesta);
           });
         }
     }, []);
