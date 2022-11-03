@@ -11,7 +11,7 @@ const TablaContenidoTr = () => {
         
 
         if (token) {
-          axiosClient.get('/ListarContenido').then((e)=>{
+          axiosClient.post('/ListarContenido').then((e)=>{
             console.log(e.respuesta);
             setdato(e.respuesta);
           });

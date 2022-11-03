@@ -12,7 +12,7 @@ const TablaExamenTr = () => {
       let token = localStorage.getItem('token')
 
       if (token) {
-        axiosClient.get('/ListarExamenes').then(({data})=>{
+        axiosClient.post('/ListarExamenes').then(({data})=>{
           //console.log(e.respuesta);
           setdato(data.respuesta);
         });
