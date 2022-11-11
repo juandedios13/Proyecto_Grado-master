@@ -33,6 +33,14 @@ const Tablero = () => {
           setIdSubConAnterior(data[0].anterior.idSubContenidoDetalle);
           setIdSubConSiguiente(data[0].siguiente.idSubContenidoDetalle);
         })
+
+        axiosClient.post('/trazabilidad', dato).then(({data})=>{
+          console.log("Trazabilidad")
+          console.log(data)
+          if(data){
+            alert("Has conseguido un nuevo logro ¡Felicitaciones!")
+          }
+        })
     }
 },[]);  
 

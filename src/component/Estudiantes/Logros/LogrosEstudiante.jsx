@@ -18,6 +18,9 @@ import image16 from '../../../style/img/logros/8.8.PNG';
 
 
 const LogrosEstudiante = () => {
+
+    
+
   return (
     <>
     <div>-</div>
