@@ -87,13 +87,13 @@ th:hover, td:hover{
    
 }
 
-img{
+.imgCalificaciones{
     width: 300px;
    padding: 20px;
     transition: 2s;
 }
 
-img:hover{
+.imgCalificaciones:hover{
     width: 350px;
 }
 
@@ -206,7 +206,7 @@ img:hover{
         padding: 0;
     }
 
-    img, .imgdos, .imgtres{
+    .imgCalificaciones, .imgdos, .imgtres{
        display: none; 
     }
 

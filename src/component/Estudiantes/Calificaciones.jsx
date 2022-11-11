@@ -34,7 +34,7 @@ const Calificaciones = (props) => {
     <>
         <div className="contenedornotasexamen">
             <div className="tablanotas">
-                <img src={Checando} alt />
+                <img className='imgCalificaciones' src={Checando} alt />
                 <table className="tablass">
                 <tbody>
                     <tr className="tablasstr">
@@ -62,8 +62,8 @@ const Calificaciones = (props) => {
                     </tr>
                 </tbody></table>
                 <div className="img22">
-                <img className="imgdos" src={ExcelentesNotas}  />
-                <img className="imgtres" src={QuienLoDejoSubir}  />
+                <img className="imgCalificaciones imgdos" src={ExcelentesNotas}  />
+                <img className="imgCalificaciones imgtres" src={QuienLoDejoSubir}  />
                 </div> 
                 {/* <img class="imgaten" src="img/cinco.PNG" alt="">*/}               
             </div>
