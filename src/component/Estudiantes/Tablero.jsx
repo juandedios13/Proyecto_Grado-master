@@ -35,7 +35,6 @@ const Tablero = () => {
         })
 
         axiosClient.post('/trazabilidad', dato).then(({data})=>{
-          console.log("Trazabilidad")
           console.log(data)
           if(data){
             alert("Has conseguido un nuevo logro ¡Felicitaciones!")

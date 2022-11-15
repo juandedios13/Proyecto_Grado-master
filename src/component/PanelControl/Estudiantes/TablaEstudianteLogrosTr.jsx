@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import {
+  Link
+} from "react-router-dom";
 import { axiosClient } from '../../../config/axiosClient';
 
 const TablaEstudianteLogrosTr = () => {
@@ -10,14 +13,10 @@ const TablaEstudianteLogrosTr = () => {
 
         let token = localStorage.getItem('token');
 
-        const datos = {
-            datos:{tipo:"estudiante"}
-        }
-
         if(token){
-          axiosClient.post('/Listar', datos).then(({data})=>{
+          axiosClient.post('/ListarCantidadLogrosXEstudiante').then(({data})=>{
             //console.log(e.respuesta);
-            setdato(data.respuesta);
+            setdato(data.ress);
           });
         }
     }, []);
@@ -32,13 +31,14 @@ const TablaEstudianteLogrosTr = () => {
             dato.length>0 ?   
 
             dato.map((e,index)=>{
-                return (<tr key={index+1}>
+                return (
+                  <tr key={index+1}>
                     <th className='text-dark' scope="row">{index+1}</th>
-                    <td className='text-dark' >{e.NombreUsario}</td>
-                    <td className='text-dark'>{e.ApellidoUsuario}</td>
-                    <td className='text-dark'>{e.estudianteEdad}</td>
+                    <td className='text-dark' >{e.NombreUsario + ' ' + e.ApellidoUsuario}</td>
+                    <td className='text-dark'>{e.NCantidad}</td>
+                    <td> <Link to={`/Panel/LogrosDocente/Estudiante/${e.estudiante_usuario_Idusuario}`} className='nav-link'><i className='nav-icon fas fa-edit'>Visualizar</i> </Link> </td>
                 </tr>)
-            }) : <di></di>
+            }) : <tr></tr>
         }
 
 

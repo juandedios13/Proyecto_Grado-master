@@ -35,7 +35,7 @@ export const Aside = () => {
                         <NavLink className={({isActive})=> isActive?'nav-link active':'nav-link'} to={'/Panel/docente'}><p>Listar docentes</p></NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink className={({isActive})=> isActive?'nav-link active':'nav-link'} to={'/Panel/logros'}><p>Listar logros</p></NavLink>
+                        <NavLink className={({isActive})=> isActive?'nav-link active':'nav-link'} to={'/Panel/LogrosDocente/Estudiante/0'}><p>Listar logros</p></NavLink>
                     </li>
                     <li className="nav-item">
                         <NavLink className={({isActive})=> isActive?'nav-link active':'nav-link'} to={'/Panel/registro'}><p>Registrar</p></NavLink>

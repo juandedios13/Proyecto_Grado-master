@@ -48,13 +48,13 @@ export const AsideDocente = () => {
                 </a>
                 <ul className="nav nav-treeview">
                     <li className="nav-item">
-                        <NavLink className={({isActive})=> isActive?'nav-link active':'nav-link'} to={'/Panel/registro'}><p>Trazabilidad</p></NavLink>                   
+                        <NavLink className={({isActive})=> isActive?'nav-link active':'nav-link'} to={'/Panel/TrazabilidadDocente'}><p>Trazabilidad</p></NavLink>                   
                     </li>
                     <li className="nav-item">
-                        <NavLink className={({isActive})=> isActive?'nav-link active':'nav-link'} to={'/Panel/registro'}><p>Notas</p></NavLink>
+                        <NavLink className={({isActive})=> isActive?'nav-link active':'nav-link'} to={'/Panel/NotasDocente'}><p>Notas</p></NavLink>
                     </li>
                     <li className="nav-item">
-                        <NavLink className={({isActive})=> isActive?'nav-link active':'nav-link'} to={'/Panel/registro'}><p>Logros</p></NavLink>
+                        <NavLink className={({isActive})=> isActive?'nav-link active':'nav-link'} to={'/Panel/LogrosDocente'}><p>Logros</p></NavLink>
                     </li>
                 </ul>
                 </li>

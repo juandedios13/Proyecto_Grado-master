@@ -1,4 +1,7 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect,useState } from 'react';
+import {
+    useParams
+  } from "react-router-dom";
 import { axiosClient } from '../../../config/axiosClient';
 import image1 from '../../../style/img/logros/1.PNG';
 import image2 from '../../../style/img/logros/1.1.PNG';
@@ -18,7 +21,9 @@ import image15 from '../../../style/img/logros/8.PNG';
 import image16 from '../../../style/img/logros/8.8.PNG';
 
 
-const LogrosEstudiante = () => {
+const LogrosEstudiantePanel = () => {
+
+    const {id} = useParams();
 
     const [IdLogrosUsuaruio,setStateIdLogros] = useState([]);
     const [State1,setState1] = useState(false);
@@ -40,15 +45,38 @@ const LogrosEstudiante = () => {
 
 
     useEffect(()=>{
+        if(id != 0){
+            let token = localStorage.getItem('token');
+            if (token) {
 
-        let token = localStorage.getItem('token');
-        if (token) {
-            axiosClient.post('/ListarLogros').then(({data})=>{
-              setStateIdLogros(data.ress)
-              
-            })
-    
+                const datos = {
+                    datos:{id:id}
+                }
+
+                axiosClient.post('/ListarLogrosDocente',datos).then(({data})=>{
+                setStateIdLogros(data.ress)
+                
+                })
+        
+            }
+        }else{
+            setState1(true)
+            setState2(true)
+            setState3(true)
+            setState5(true)
+            setState6(true)
+            setState7(true)
+            setState8(true)
+            setState9(true)
+            setState10(true)
+            setState11(true)
+            setState12(true)
+            setState13(true)
+            setState14(true)
+            setState15(true)
+            setState16(true)
         }
+        
     },[]);  
 
     useEffect(()=>{
@@ -224,4 +252,4 @@ const LogrosEstudiante = () => {
   )
 }
 
-export default LogrosEstudiante
+export default LogrosEstudiantePanel
