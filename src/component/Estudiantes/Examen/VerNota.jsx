@@ -16,7 +16,9 @@ const VerNota = (props) => {
     let texto = ' Calificación : ' + nota +' puntos de 10';
     useEffect(() => {
 
-       
+       if(nota >= 6){
+        alert("Has conseguido un nuevo logro ¡Felicitaciones!")
+       }
 
         const datos = {
             datos:{idexamen:id}

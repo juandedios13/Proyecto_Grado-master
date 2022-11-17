@@ -29,6 +29,10 @@ import VerNota from "../component/Estudiantes/Examen/VerNota";
 import Calificaciones from "../component/Estudiantes/Calificaciones";
 import TablaEstudiantesLogros from "../component/PanelControl/Estudiantes/TablaEstudiantesLogros";
 import LogrosEstudiantePanel from "../component/PanelControl/Estudiantes/LogrosEstudiantePanel";
+import TablaEstudianteNotasTr from "../component/PanelControl/Estudiantes/TablaEstudianteTrazabilidadTr";
+import TablaEstudiantesNotas from "../component/PanelControl/Estudiantes/TablaEstudiantesNotas";
+import NotasEstudiantePanel from "../component/PanelControl/Estudiantes/NotasEstudiantePanel";
+import TablaEstudiantesTrazabilidad from "../component/PanelControl/Estudiantes/TablaEstudiantesTrazabilidad";
 
 const AppRouter = () => {
 
@@ -46,6 +50,9 @@ const AppRouter = () => {
                 <Route path="registro" element={<Registro></Registro> }></Route>
                 <Route path="LogrosDocente" element={<TablaEstudiantesLogros></TablaEstudiantesLogros> }></Route>
                 <Route path="LogrosDocente/Estudiante/:id" element={<LogrosEstudiantePanel></LogrosEstudiantePanel> }></Route>
+                <Route path="NotasDocente" element={<TablaEstudiantesNotas></TablaEstudiantesNotas>}></Route>
+                <Route path="NotasDocente/Estudiante/:id" element={<NotasEstudiantePanel></NotasEstudiantePanel>}></Route>
+                <Route path="TrazabilidadDocente" element={<TablaEstudiantesTrazabilidad></TablaEstudiantesTrazabilidad>}></Route>
                 <Route path="Examenes" element={<TablaExamen></TablaExamen> }></Route>
                 <Route path="Preguntas/:id" element={<TablaPreguntasExamen></TablaPreguntasExamen> }></Route>
                 <Route path="PreguntaRespuesta/:id" element={<ActualizarPreguntas></ActualizarPreguntas> }></Route>                
