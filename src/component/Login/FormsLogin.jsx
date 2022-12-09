@@ -37,8 +37,15 @@ const FormsLogin = () => {
                 enviar('Panel')
             }else if(e.tipo){
                 enviar('Estudiantes')
+            }else{
+                alert("Datos incorrectos")
             }
-        });
+        }).catch(
+            function (error) {
+               alert('Show error notification!')
+              
+            }
+        );
     }
 
 

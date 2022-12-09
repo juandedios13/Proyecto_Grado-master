@@ -20,7 +20,7 @@ export const Content = () => {
               sinCOntenido == true?<div className='SinContenido'>-Otroperri-</div>:<></> 
             }
 
-            <Outlet>
+            <Outlet className="content-Outlet">
                 
             </Outlet> 
             <div>--</div>

@@ -27,7 +27,15 @@ const Registro = () => {
     const handleSubmit = (e)=>{
       e.preventDefault();
       if(datos.Nombre != '' && datos.Apellidos != '' && datos.Correo != ''  && datos.Contrasena != ''){
-        axiosClient('/registarAdminDocente', {datos}).then(({data})=>{
+        let url = ''
+        console.log("datos.tipo"+datos.tipo)
+        if(datos.tipo == 'Docente'){
+          url = '/registarAdminDocente'
+        }else{
+          url = '/registarAdminEstudiante'
+        }
+        console.log(url)
+        axiosClient.post(url, {datos}).then(({data})=>{
           if(data.registro == 'true' || data.registro ){
             alert('Registro exitoso');
             setDatos({
@@ -44,7 +52,6 @@ const Registro = () => {
     }
 
     const handleDatos = (e)=>{
-        console.log(e.target.name);
         setDatos({
             ...datos,
             [e.target.name]: e.target.value
